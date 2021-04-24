@@ -40,7 +40,7 @@ public class Affectation_PM {
 					x[i][j]= opl.numVar(0,1);
 				}
 			}
-
+                            //max
 			IloLinearNumExpr objective = opl.linearNumExpr();
 			for (int i=0; i<n; i++) {
 				for (int j=0; j<n; j++) {
@@ -49,12 +49,13 @@ public class Affectation_PM {
 			}
 			opl.addMaximize(objective);
 			// contraintes
-
-
+                          
+                         //les lignes
 			for (int i=0; i<n; i++) {
 				opl.addLe(opl.sum(x[i]),1);
 
 			}
+			//transposer de matrice x
 			IloNumVar[][] tr = new IloNumVar[n][n];
 			
 			  for(int i = 0; i<n ;i++){
@@ -64,7 +65,7 @@ public class Affectation_PM {
 			         }
 			       
 			      }
-
+                            // les colonnes
 			  for (int i=0; i<n; i++) {
 					opl.addLe(opl.sum(tr[i]),1);
 
